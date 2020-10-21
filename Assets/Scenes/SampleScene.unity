@@ -1143,33 +1143,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 1511938395}
   status: {fileID: 1120051070}
+  enemySpawner: {fileID: 1536404620}
   textAmmo: {fileID: 1892094980}
   textHP: {fileID: 1993315730}
   imageBloodScreen: {fileID: 937804024}
   bloodScreenCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  textEnemyCount: {fileID: 545022608}
 --- !u!4 &1350752709
 Transform:
   m_ObjectHideFlags: 0
@@ -1359,8 +1343,11 @@ MonoBehaviour:
   - {fileID: 1047852942}
   enemyPrefab: {fileID: 4145228222469434716, guid: 63c12a8543c96974faf1b2cd5b26cfe4,
     type: 3}
-  spawnTime: 0.5
+  spawnTime: 1
   maxEnemyCount: 50
+  onEnemyCountEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1536404621
 Transform:
   m_ObjectHideFlags: 0
