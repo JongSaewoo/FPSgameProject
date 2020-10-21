@@ -73,6 +73,6 @@ public class PlayerHUD : MonoBehaviour
 
     private void EnemyCountUpdate(int currentEnemy, int maxEnemy)
     {
-        textEnemyCount.text = "Enemy " + currentEnemy + "/" + maxEnemy);
+        textEnemyCount.text = "Enemy " + currentEnemy + "/" + maxEnemy;
     }
 }
