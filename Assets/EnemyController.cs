@@ -12,13 +12,11 @@ public class EnemyController : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private Status status;
     private Transform target;
-    private EnemySpawner enemySpawner;
 
-    public void Setup(EnemySpawner enemySpawner, Transform target)
+    public void Setup(Transform target)
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         status = GetComponent<Status>();
-        this.enemySpawner = enemySpawner;
         this.target = target;
 
         StartCoroutine("UpdateMove");
@@ -45,7 +43,6 @@ public class EnemyController : MonoBehaviour
         {
             collider.GetComponent<PlayerController>().TakeDamage(damage);
 
-            enemySpawner.DieEnemy();
             Destroy(this.gameObject);
         }
     }
@@ -60,7 +57,6 @@ public class EnemyController : MonoBehaviour
         {
             StopCoroutine("UpdateMove");
 
-            enemySpawner.DieEnemy();
             Destroy(this.gameObject);
         }
     }
