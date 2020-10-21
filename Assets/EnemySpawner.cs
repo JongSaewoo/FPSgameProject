@@ -14,9 +14,11 @@ public class EnemySpawner : MonoBehaviour
     private float spawnTime = 0.5f;
     [SerializeField]
     private int maxEnemyCount = 50;
+    private int arriveEnemyCount;
 
     private void Awake()
     {
+        arriveEnemyCount = maxEnemyCount;
         StartCoroutine("SpawnEnemy");
     }
 
@@ -34,6 +36,16 @@ public class EnemySpawner : MonoBehaviour
             enemyCount++;
 
             yield return new WaitForSeconds(spawnTime);
+        }
+    }
+
+    public void DieEnemy()
+    {
+        arriveEnemyCount--;
+
+        if(arriveEnemyCount == 0)
+        {
+            Debug.Log("Stage Clear");
         }
     }
 }
