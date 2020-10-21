@@ -16,9 +16,13 @@ public class EnemySpawner : MonoBehaviour
     private int maxEnemyCount = 50;
     private int arriveEnemyCount;
 
+    [HideInInspector]
+    public EnemyCountEvent onEnemyCountEvent = new EnemyCountEvent();
+
     private void Awake()
     {
         arriveEnemyCount = maxEnemyCount;
+
         StartCoroutine("SpawnEnemy");
     }
 
@@ -31,7 +35,7 @@ public class EnemySpawner : MonoBehaviour
             int index = Random.Range(0, spawnPoints.Length);
             GameObject cloneEnemy = Instantiate(enemyPrefab, spawnPoints[index].position, Quaternion.identity);
 
-            cloneEnemy.GetComponent<EnemyController>().Setup(target);
+            cloneEnemy.GetComponent<EnemyController>().Setup(this, target);
 
             enemyCount++;
 
@@ -49,3 +53,6 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 }
+
+[System.Serializable]
+public class EnemyCountEvent : UnityEngine.Events.UnityEvent<int, int> { }
