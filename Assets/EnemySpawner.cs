@@ -23,6 +23,8 @@ public class EnemySpawner : MonoBehaviour
     {
         arriveEnemyCount = maxEnemyCount;
 
+        onEnemyCountEvent.Invoke(arriveEnemyCount, maxEnemyCount);
+
         StartCoroutine("SpawnEnemy");
     }
 
@@ -46,6 +48,8 @@ public class EnemySpawner : MonoBehaviour
     public void DieEnemy()
     {
         arriveEnemyCount--;
+
+        onEnemyCountEvent.Invoke(arriveEnemyCount, maxEnemyCount);
 
         if(arriveEnemyCount == 0)
         {
