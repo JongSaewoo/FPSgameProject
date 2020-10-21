@@ -11,6 +11,8 @@ public class PlayerHUD : MonoBehaviour
     private WeaponAssaultRifle weapon;
     [SerializeField]
     private Status status;
+    [SerializeField]
+    private EnemySpawner enemySpawner;
 
     [Header("Ammo UI")]
     [SerializeField]
@@ -24,10 +26,15 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField]
     private AnimationCurve bloodScreenCurve;
 
+    [Header("Enemy Informtion UI")]
+    [SerializeField]
+    private TextMeshProUGUI textEnemyCount;
+
     private void Awake()
     {
         weapon.onAmmoEvent.AddListener(AmmoHUDUpdate);
         status.onHPEvent.AddListener(HPHUDUpdate);
+        enemySpawner.onEnemyCountEvent.AddListener(EnemyCountUpdate);
     }
 
     private void AmmoHUDUpdate(int currentAmmo, int maxAmmo)
@@ -62,5 +69,10 @@ public class PlayerHUD : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    private void EnemyCountUpdate(int currentEnemy, int maxEnemy)
+    {
+        textEnemyCount.text = "Enemy " + currentEnemy + "/" + maxEnemy);
     }
 }
