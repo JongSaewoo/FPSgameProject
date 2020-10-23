@@ -11,8 +11,8 @@ public class EnemyController : MonoBehaviour
     private int damage = 5;
     private NavMeshAgent navMeshAgent;
     private Status status;
-    public Transform target;
-    public EnemySpawner enemySpawner;
+    private Transform target;
+    private EnemySpawner enemySpawner;
 
     public void Setup(EnemySpawner enemySpawner, Transform target)
     {
