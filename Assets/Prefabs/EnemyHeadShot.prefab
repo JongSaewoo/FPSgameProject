@@ -2810,7 +2810,7 @@ Transform:
   m_GameObject: {fileID: 2155645266499943028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 2155645266500141800}
   - {fileID: 2155645266500152548}
@@ -2945,7 +2945,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c823a4397bcc9ee408e15cfccf475dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bloodImpact: {fileID: 194062, guid: bb954c7832c9a9845b017b284d33fbc8, type: 3}
+  bloodImpact: {fileID: 330952880838995423, guid: eeab36b594aff794fa79fe1c6982ebc9,
+    type: 3}
   damage: 5
 --- !u!195 &2155645265986764786
 NavMeshAgent:
