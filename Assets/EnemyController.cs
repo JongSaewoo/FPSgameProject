@@ -64,4 +64,20 @@ public class EnemyController : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    public void TakeDamage(int damage)
+    {
+        Vector3 position = GetComponent<Collider>().bounds.center;
+        Instantiate(bloodImpact, position, Quaternion.identity);
+
+        bool isDie = status.DecreaseHP(damage);
+
+        if (isDie == true)
+        {
+            StopCoroutine("UpdateMove");
+
+            enemySpawner.DieEnemy();
+            Destroy(this.gameObject);
+        }
+    }
 }

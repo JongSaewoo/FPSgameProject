@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         status = this.GetComponent<Status>();
         weapon = this.GetComponentInChildren<WeaponAssaultRifle>();
     }
-
+      
     private void Update()
     {
         UpdateRotate();

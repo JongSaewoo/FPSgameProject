@@ -159,13 +159,23 @@ public class WeaponAssaultRifle : MonoBehaviour
         }
         Debug.DrawRay(ray.origin, ray.direction * weaponSetting.fireDistance, Color.red);
 
+        // 첫번째 RayCast연산으로 얻어진 targetPoint를 목표지점으로 설정
+        // 총구를 시작지점으로 RayCase연산
         Vector3 attackDirection = (targetPoint - bulletSpawnPoint.position).normalized;
         if (Physics.Raycast(bulletSpawnPoint.position, attackDirection, out hit, weaponSetting.fireDistance))
         {
+            // 총에 맞은 오브젝트가 좀비일때
             if(hit.transform.tag.Equals("Enemy"))
             {
                 hit.transform.GetComponent<EnemyController>().TakeDamage(damage, hit);
             }
+            // 테그가 "InteractionObject" 일때
+            // = 총에 맞은 오브젝트가 상호작용 오브젝트 일 때(barrel)
+            else if (hit.transform.tag.Equals("InteractionObject"))
+            {
+                hit.transform.GetComponent<InteractionObject>().TakeDamage(damage);
+            }
+            // 총에 맞은 오브젝트가 그 외 다른 오브젝트일때
             else
             {
                 Instantiate(impactPrefab, hit.point, Quaternion.LookRotation(hit.normal));
