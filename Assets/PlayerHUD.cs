@@ -46,7 +46,13 @@ public class PlayerHUD : MonoBehaviour
     {
         textHP.text = "HP : " + currentHP;
 
+        if (previousHP <= currentHP) return;
+        // 기존에 체력이 감소되면 Blood UI가 활성화 되는데
+        // 회복했을 땐 처리하지 않도록 함.
+
         if(previousHP - currentHP > 0)
+        // 중간에 StopCoroutine으로 중단할 필요가 있는 
+        // 코루틴의 경우 문자열로 작동시키고 종료
         {
             StopCoroutine("UpdateBloodScreen");
             StartCoroutine("UpdateBloodScreen", 1);

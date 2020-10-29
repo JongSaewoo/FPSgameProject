@@ -51,6 +51,22 @@ public class Status : MonoBehaviour
 
         return false;
     }
+
+    public void IncreaseHP(int increaseHP)
+    {
+        int previousHP = currentHP;
+
+        currentHP += increaseHP;
+        
+        if(currentHP > maxHP)
+        // 회복량이 최대체력을 넘어서지 못하도록
+        {
+            currentHP = maxHP;
+        }
+
+        // onHPEvent에 등록된 모든 객체의 메소드 호출
+        onHPEvent.Invoke(previousHP, currentHP);
+    }
 }
 
 [System.Serializable]
